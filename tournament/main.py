@@ -9,26 +9,11 @@ from model import Model
 def main():
     parser = argparse.ArgumentParser(description="BTHOWeN Predictor")
     parser.add_argument("input_file", type=str)
-    #parser.add_argument("num_pc_filters", type=int, default=2, nargs="?")
-    #parser.add_argument("num_lhr_filters", type=int, default=2, nargs="?")
-    #parser.add_argument("num_ghr_filters", type=int, default=2, nargs="?")
-    #parser.add_argument("num_xor_filters", type=int, default=2, nargs="?")
     parser.add_argument("pc_lut_addr_size", type=int, default=4, nargs="?")
     parser.add_argument("lhr_lut_addr_size", type=int, default=4, nargs="?")
     parser.add_argument("ght_lut_addr_size", type=int, default=4, nargs="?")
     parser.add_argument("ga_lut_addr_size", type=int, default=4, nargs="?")
     parser.add_argument("xor_lut_addr_size", type=int, default=4, nargs="?")
-    #parser.add_argument("pc_bleaching_threshold", type=int, default=2, nargs="?")
-    #parser.add_argument("lhr_bleaching_threshold", type=int, default=2, nargs="?")
-    #parser.add_argument("ght_bleaching_threshold", type=int, default=2, nargs="?")
-    #parser.add_argument("xor_bleaching_threshold", type=int, default=2, nargs="?")
-    parser.add_argument("pc_tournament_weight", type=float, default=5, nargs="?")
-    parser.add_argument("lhr_tournament_weight", type=float, default=2, nargs="?")
-    parser.add_argument("ghr_tournament_weight", type=float, default=2, nargs="?")
-    parser.add_argument("ga_tournament_weight", type=float, default=2, nargs="?")
-    parser.add_argument("xor_tournament_weight", type=float, default=3, nargs="?")
-    #parser.add_argument("ghr_lut_addr_size", type=int, default=4, nargs="?")
-    #parser.add_argument("num_hashes", type=int, default=3, nargs="?")
     parser.add_argument("ghr_size", type=int, default=4, nargs="?")
     parser.add_argument("ga_branches", type=int, default=4, nargs="?")
     parser.add_argument("--params_file", type=str)
@@ -52,93 +37,96 @@ def main():
             )
     else:
         parameters = [
-            1,
-            1,
-            1,
-            1,
-            1,
             args.pc_lut_addr_size,
             args.lhr_lut_addr_size, 
             args.ght_lut_addr_size,
             args.ga_lut_addr_size,
             args.xor_lut_addr_size,
-            8000,
-            8000,
-            8000,
-            8000,
-            8000,
-            args.pc_tournament_weight,
-            args.lhr_tournament_weight,
-            args.ga_tournament_weight,
-            args.ghr_tournament_weight,
-            args.xor_tournament_weight,
-            3,
-            3,
-            3,
-            3,
-            3,
             args.ghr_size,
             args.ga_branches
         ]
         #print(parameters)
 
-    predictor = Model(parameters)
-    print(f"Input size: {predictor.input_size}")
+    import itertools
+    predictors = ['pc', 'lhr', 'ghr', 'ga', 'xor']
+    # Gerar todas as 20 permutações para os dois primeiros preditores
+    initial_pairs = list(itertools.permutations(predictors, 2))
 
-    num_branches = 0
-    num_predicted = 0
-    interval = 10000
+    # Loop para testar cada uma das 20 combinações
+    for initial_pair in initial_pairs:
+        
+        # Obter os 3 preditores restantes
+        remaining_predictors = [p for p in predictors if p not in initial_pair]
 
-    branches_processed = []
-    accuracies = []
-    with open(input_file, "r") as f:
-        for line in f:
-            pc, outcome = map(int, line.strip().split())
-            num_branches += 1
-            if predictor.predict_and_train(pc, outcome):
-                num_predicted += 1
-            if num_branches % interval == 0:
-                accuracy = (num_predicted / num_branches) * 100
-                branches_processed.append(num_branches)
-                accuracies.append(accuracy)
-                predictor.apply_bleaching()
-                print(f"Branch number: {num_branches}")
-                print(f"----- Partial Accuracy: {accuracy:.4f}\n")
+        # Gerar todas as 6 permutações para os preditores restantes
+        remaining_permutations = list(itertools.permutations(remaining_predictors))
 
-    input_file_base = os.path.splitext(os.path.basename(input_file))[0]
-    output_dir = f"Results_accuracy/{input_file_base}"
-    os.makedirs(output_dir, exist_ok=True)
-    timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+     # Para cada par inicial, testar todas as permutações dos 3 restantes
+        for remaining_hierarchy in remaining_permutations:
+            
+            # Combinar para formar a hierarquia completa de 5 preditores
+            hierarchy = list(initial_pair) + list(remaining_hierarchy)
 
-    plt.figure(figsize=(10, 6))
-    plt.plot(branches_processed, accuracies, marker="o")
-    plt.title("Accuracy Over Time")
-    plt.xlabel("Number of Branches Processed")
-    plt.ylabel("Accuracy (%)")
-    plt.grid()
-    plt.savefig(f"{output_dir}/{timestamp}-BTHOWeN-accuracy.png")
-    # plt.show()
+            print(f"Testando a hierarquia: {hierarchy}")
 
-    final_accuracy = (num_predicted / num_branches) * 100
+            predictor = Model(parameters)
+            #print(f"Input size: {predictor.input_size}")
 
-    os.makedirs("true_bthowen_accuracy", exist_ok=True)
+            num_branches = 0
+            num_predicted = 0
+            interval = 10000
 
-    with open(f"{output_dir}/{timestamp}-BTHOWeN-accuracy.csv", "w", newline="") as e:
-        writer = csv.writer(e)
-        writer.writerow(
-            ["Number of Branches Processed", "Accuracy (%)"]
-        )
-        writer.writerows(zip(branches_processed, accuracies))  # Dados do gráfico
+            branches_processed = []
+            accuracies = []
+            with open(input_file, "r") as f:
+                for line in f:
+                    pc, outcome = map(int, line.strip().split())
+                    num_branches += 1
+                    if predictor.predict_and_train(pc, outcome, hierarchy):
+                        num_predicted += 1
+                    #if num_branches % interval == 0:
+                    #    accuracy = (num_predicted / num_branches) * 100
+                    #    branches_processed.append(num_branches)
+                    #    accuracies.append(accuracy)
+                    #    #predictor.apply_bleaching()
+                    #    print(f"Branch number: {num_branches}")
+                    #    print(f"----- Partial Accuracy: {accuracy:.4f}\n")
 
-    with open(f"true_bthowen_accuracy/{input_file_base}-accuracy.csv", "a") as f:
-        f.write(f"{final_accuracy:.4f},BTHOWeN,{','.join(list(map(str,parameters)))}\n")
-
-    print("\n----- Results ------")
-    print(f"Predicted branches: {num_predicted}")
-    print(f"Not predicted branches: {num_branches - num_predicted}")
-    print(f"Accuracy: {final_accuracy:.4f}")
-    print(f"\n------ Size of ntuple (address_size): {parameters[0]}")
-    print(f"------ Size of each input: {predictor.input_size}")
+    #input_file_base = os.path.splitext(os.path.basename(input_file))[0]
+    #output_dir = f"Results_accuracy/{input_file_base}"
+    #os.makedirs(output_dir, exist_ok=True)
+    #timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+#
+    #plt.figure(figsize=(10, 6))
+    #plt.plot(branches_processed, accuracies, marker="o")
+    #plt.title("Accuracy Over Time")
+    #plt.xlabel("Number of Branches Processed")
+    #plt.ylabel("Accuracy (%)")
+    #plt.grid()
+    #plt.savefig(f"{output_dir}/{timestamp}-BTHOWeN-accuracy.png")
+    ## plt.show()
+#
+            final_accuracy = (num_predicted / num_branches) * 100
+#
+    #os.makedirs("true_bthowen_accuracy", exist_ok=True)
+#
+    #with open(f"{output_dir}/{timestamp}-BTHOWeN-accuracy.csv", "w", newline="") as e:
+    #    writer = csv.writer(e)
+    #    writer.writerow(
+    #        ["Number of Branches Processed", "Accuracy (%)"]
+    #    )
+    #    writer.writerows(zip(branches_processed, accuracies))  # Dados do gráfico
+#
+    #with open(f"true_bthowen_accuracy/{input_file_base}-accuracy.csv", "a") as f:
+    #    f.write(f"{final_accuracy:.4f},BTHOWeN,{','.join(list(map(str,parameters)))}\n")
+#
+            print("\n----- Results ------")
+            print(f"Predicted branches: {num_predicted}")
+            print(f"Not predicted branches: {num_branches - num_predicted}")
+            print(f"Accuracy: {final_accuracy:.4f}")
+            print("--------------------\n")
+        #print(f"\n------ Size of ntuple (address_size): {parameters[0]}")
+        #print(f"------ Size of each input: {predictor.input_size}")
 
 
 if __name__ == "__main__":

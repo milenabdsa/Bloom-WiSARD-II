@@ -5,33 +5,23 @@ from discriminator import Discriminator
 
 class Model:
     def __init__(self, input_params):
-        self.num_pc_filters = input_params[0]
-        self.num_lhr_filters = input_params[1]
-        self.num_ghr_filters = input_params[2]
-        self.num_ga_filters = input_params[3]
-        self.num_xor_filters = input_params[4]
-        self.pc_lut_addr_size = input_params[5]
-        self.lhr_lut_addr_size = input_params[6]
-        self.ghr_lut_addr_size = input_params[7]
-        self.ga_lut_addr_size = input_params[8]
-        self.xor_lut_addr_size = input_params[9]
-        self.pc_bleaching_threshold    = input_params[10]
-        self.lhr_bleaching_threshold = input_params[11]
-        self.ghr_bleaching_threshold = input_params[12]
-        self.ga_bleaching_threshold = input_params[13]
-        self.xor_bleaching_threshold = input_params[14]
-        self.pc_tournament_weight = input_params[15]
-        self.lhr_tournament_weight = input_params[16]
-        self.ga_tournament_weight   = input_params[17]
-        self.ghr_tournament_weight   = input_params[18]
-        self.xor_tournament_weight = input_params[19]
-        self.pc_num_hashes = input_params[20]
-        self.lhr_num_hashes = input_params[21]
-        self.ghr_num_hashes = input_params[22]
-        self.ga_num_hashes = input_params[23]
-        self.xor_num_hashes = input_params[24]
-        self.ghr_size = input_params[25]
-        self.ga_branches = input_params[26]
+        self.num_pc_filters = 3
+        self.num_lhr_filters = 3
+        self.num_ghr_filters = 3
+        self.num_ga_filters = 3
+        self.num_xor_filters = 3
+        self.pc_lut_addr_size = input_params[0]
+        self.lhr_lut_addr_size = input_params[1]
+        self.ghr_lut_addr_size = input_params[2]
+        self.ga_lut_addr_size = input_params[3]
+        self.xor_lut_addr_size = input_params[4]
+        self.pc_num_hashes = 3
+        self.lhr_num_hashes = 3
+        self.ghr_num_hashes = 3
+        self.ga_num_hashes = 3
+        self.xor_num_hashes = 3
+        self.ghr_size = input_params[5]
+        self.ga_branches = input_params[6]
         self.seed = 203
 
         self.pc_discriminators = [
@@ -152,13 +142,54 @@ class Model:
             chunks[i] += binary_input[num_filters * chunk_size + i]
         return [chunk.encode() for chunk in chunks]
 
-    def predict_and_train(self, pc: int, outcome: int):
-        prediction = self.predict(pc)
+    def predict_and_train(self, pc: int, outcome: int, hierarchy: List[str]) -> bool:
         
         pc_features, xor_features, lhr_features, ghr_features, ga_features = self.extract_features(pc)
         pc_pieces, xor_pieces, lhr_pieces, ghr_pieces, ga_pieces = self.get_input_pieces(
             pc_features, xor_features, lhr_features, ga_features, ghr_features
         )
+
+        
+        pc_count_0=self.pc_discriminators[0].get_count(pc_pieces)
+        pc_count_1=self.pc_discriminators[1].get_count(pc_pieces)
+        lhr_count_0= self.lhr_discriminators[0].get_count(lhr_pieces)
+        lhr_count_1= self.lhr_discriminators[1].get_count(lhr_pieces)
+        ghr_count_0= self.ghr_discriminators[0].get_count(ghr_pieces)
+        ghr_count_1= self.ghr_discriminators[1].get_count(ghr_pieces)
+        ga_count_0=self.ga_discriminators[0].get_count(ga_pieces)
+        ga_count_1=self.ga_discriminators[1].get_count(ga_pieces)
+        xor_count_0= self.xor_discriminators[0].get_count(xor_pieces)
+        xor_count_1= self.xor_discriminators[1].get_count(xor_pieces)
+        
+
+        predictions = {
+            'pc': 1 if pc_count_1 > pc_count_0 else 0,
+            'lhr': 1 if lhr_count_1 > lhr_count_0 else 0,
+            'ghr': 1 if ghr_count_1 > ghr_count_0 else 0,
+            'ga': 1 if ga_count_1 > ga_count_0 else 0,
+            'xor': 1 if xor_count_1 > xor_count_0 else 0
+        }
+
+        # Lógica de fusão de 3 passos
+    
+        # Passo 1: Comparar os dois primeiros preditores
+        if predictions[hierarchy[0]] == predictions[hierarchy[1]]:
+            prediction = predictions[hierarchy[0]]
+        
+        # Passo 2: Se não houver consenso entre os dois primeiros,
+        # verifique se os próximos dois concordam com a decisão de um deles.
+        elif (predictions[hierarchy[2]] == predictions[hierarchy[0]] and 
+            predictions[hierarchy[3]] == predictions[hierarchy[0]]):
+            prediction = predictions[hierarchy[0]]
+            
+        elif (predictions[hierarchy[2]] == predictions[hierarchy[1]] and
+            predictions[hierarchy[3]] == predictions[hierarchy[1]]):
+            prediction = predictions[hierarchy[1]]
+        
+        # Passo 3: Se não houver consenso nos passos anteriores,
+        # a decisão final é do último preditor na hierarquia.
+        else:
+            prediction = predictions[hierarchy[4]]
 
         if prediction != outcome:
             self.pc_discriminators[outcome].train(pc_pieces)
@@ -176,34 +207,6 @@ class Model:
         self._update_histories(pc, outcome)
         return prediction == outcome
 
-    def _tournament_predict(
-        self,
-        pc_count_0: int,
-        pc_count_1: int,
-        xor_count_0: int,
-        xor_count_1: int,
-        lhr_count_0: int,
-        lhr_count_1: int,
-        ghr_count_0: int,
-        ghr_count_1: int,
-        ga_count_0: int,
-        ga_count_1: int,
-    ) -> int:
-        overall_count_0 = self.pc_tournament_weight * pc_count_0 + self.lhr_tournament_weight * lhr_count_0 + self.ghr_tournament_weight * ghr_count_0 + self.ga_tournament_weight * ga_count_0 + self.xor_tournament_weight * xor_count_0
-        overall_count_1 = self.pc_tournament_weight * pc_count_1 + self.lhr_tournament_weight * lhr_count_1 + self.ghr_tournament_weight * ghr_count_1 + self.ga_tournament_weight * ga_count_1 + self.xor_tournament_weight * xor_count_1
-
-        return 0 if overall_count_0 > overall_count_1 else 1
-
-    def _tournament_predict_from_counts(self, pc: int) -> int:
-        counts = self.get_discriminator_counts(pc)
-        return self._tournament_predict(
-            counts['pc_count_0'], counts['pc_count_1'],
-            counts['xor_count_0'], counts['xor_count_1'],
-            counts['lhr_count_0'], counts['lhr_count_1'],
-            counts['ghr_count_0'], counts['ghr_count_1'],
-            counts['ga_count_0'], counts['ga_count_1']
-        )
-
     def apply_bleaching(self):
         for disc in self.pc_discriminators:
             disc.binarize(self.pc_bleaching_threshold)
@@ -219,78 +222,6 @@ class Model:
 
         for disc in self.xor_discriminators:
             disc.binarize(self.xor_bleaching_threshold)
-
-    def get_discriminator_counts(self, pc: int) -> dict:
-        pc_features, xor_features, lhr_features, ghr_features, ga_features = self.extract_features(pc)
-        pc_pieces, xor_pieces, lhr_pieces, ghr_pieces, ga_pieces = self.get_input_pieces(
-            pc_features, xor_features, lhr_features, ga_features, ghr_features
-        )
-
-        return {
-            'pc_count_0': self.pc_discriminators[0].get_count(pc_pieces),
-            'pc_count_1': self.pc_discriminators[1].get_count(pc_pieces),
-            'lhr_count_0': self.lhr_discriminators[0].get_count(lhr_pieces),
-            'lhr_count_1': self.lhr_discriminators[1].get_count(lhr_pieces),
-            'ghr_count_0': self.ghr_discriminators[0].get_count(ghr_pieces),
-            'ghr_count_1': self.ghr_discriminators[1].get_count(ghr_pieces),
-            'ga_count_0': self.ga_discriminators[0].get_count(ga_pieces),
-            'ga_count_1': self.ga_discriminators[1].get_count(ga_pieces),
-            'xor_count_0': self.xor_discriminators[0].get_count(xor_pieces),
-            'xor_count_1': self.xor_discriminators[1].get_count(xor_pieces)
-        }
-
-    def predict(self, pc: int) -> int:
-        counts = self.get_discriminator_counts(pc)
-        
-        pc_pred = 1 if counts['pc_count_1'] > counts['pc_count_0'] else 0
-        lhr_pred = 1 if counts['lhr_count_1'] > counts['lhr_count_0'] else 0
-        ghr_pred = 1 if counts['ghr_count_1'] > counts['ghr_count_0'] else 0
-        ga_pred = 1 if counts['ga_count_1'] > counts['ga_count_0'] else 0
-        xor_pred = 1 if counts['xor_count_1'] > counts['xor_count_0'] else 0
-
-        if ghr_pred == pc_pred:
-            return ghr_pred
-        elif ghr_pred == lhr_pred:
-            return ghr_pred
-        elif pc_pred == lhr_pred:
-            return pc_pred
-        elif ghr_pred == xor_pred:
-            return ghr_pred
-        elif pc_pred == xor_pred:
-            return pc_pred
-        elif lhr_pred == xor_pred:
-            return lhr_pred
-        elif ga_pred == ghr_pred:
-            return ga_pred
-        elif ga_pred == pc_pred:
-            return ga_pred
-        elif ga_pred == lhr_pred:
-            return ga_pred
-        elif ga_pred == xor_pred:
-            return ga_pred
-        
-        confidence_scores = {
-            'pc': counts['pc_count_0'] + counts['pc_count_1'],
-            'lhr': counts['lhr_count_0'] + counts['lhr_count_1'],
-            'ghr': counts['ghr_count_0'] + counts['ghr_count_1'],
-            'ga': counts['ga_count_0'] + counts['ga_count_1'],
-            'xor': counts['xor_count_0'] + counts['xor_count_1']
-        }
-        
-        max_confidence_network = max(confidence_scores, key=confidence_scores.get)
-        
-        if max_confidence_network == 'pc': 
-            return pc_pred
-        elif max_confidence_network == 'lhr': 
-            return lhr_pred
-        elif max_confidence_network == 'ghr': 
-            return ghr_pred
-        elif max_confidence_network == 'ga': 
-            return ga_pred
-        elif max_confidence_network == 'xor': 
-            return xor_pred
-        
-        return pc_pred
 
     def _update_histories(self, pc: int, outcome: int):
         self.ghr = np.roll(self.ghr, -1)
