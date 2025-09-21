@@ -1,0 +1,960 @@
+Testando a hierarquia: ['pc', 'lhr', 'ghr', 'ga', 'xor']
+
+----- Results ------
+Predicted branches: 317681
+Not predicted branches: 82319
+Accuracy: 79.4203
+--------------------
+
+Testando a hierarquia: ['pc', 'lhr', 'ghr', 'xor', 'ga']
+
+----- Results ------
+Predicted branches: 317681
+Not predicted branches: 82319
+Accuracy: 79.4203
+--------------------
+
+Testando a hierarquia: ['pc', 'lhr', 'ga', 'ghr', 'xor']
+
+----- Results ------
+Predicted branches: 317681
+Not predicted branches: 82319
+Accuracy: 79.4203
+--------------------
+
+Testando a hierarquia: ['pc', 'lhr', 'ga', 'xor', 'ghr']
+
+----- Results ------
+Predicted branches: 317681
+Not predicted branches: 82319
+Accuracy: 79.4203
+--------------------
+
+Testando a hierarquia: ['pc', 'lhr', 'xor', 'ghr', 'ga']
+
+----- Results ------
+Predicted branches: 317681
+Not predicted branches: 82319
+Accuracy: 79.4203
+--------------------
+
+Testando a hierarquia: ['pc', 'lhr', 'xor', 'ga', 'ghr']
+
+----- Results ------
+Predicted branches: 317681
+Not predicted branches: 82319
+Accuracy: 79.4203
+--------------------
+
+Testando a hierarquia: ['pc', 'ghr', 'lhr', 'ga', 'xor']
+
+----- Results ------
+Predicted branches: 306241
+Not predicted branches: 93759
+Accuracy: 76.5602
+--------------------
+
+Testando a hierarquia: ['pc', 'ghr', 'lhr', 'xor', 'ga']
+
+----- Results ------
+Predicted branches: 306241
+Not predicted branches: 93759
+Accuracy: 76.5602
+--------------------
+
+Testando a hierarquia: ['pc', 'ghr', 'ga', 'lhr', 'xor']
+
+----- Results ------
+Predicted branches: 306241
+Not predicted branches: 93759
+Accuracy: 76.5602
+--------------------
+
+Testando a hierarquia: ['pc', 'ghr', 'ga', 'xor', 'lhr']
+
+----- Results ------
+Predicted branches: 306241
+Not predicted branches: 93759
+Accuracy: 76.5602
+--------------------
+
+Testando a hierarquia: ['pc', 'ghr', 'xor', 'lhr', 'ga']
+
+----- Results ------
+Predicted branches: 306241
+Not predicted branches: 93759
+Accuracy: 76.5602
+--------------------
+
+Testando a hierarquia: ['pc', 'ghr', 'xor', 'ga', 'lhr']
+
+----- Results ------
+Predicted branches: 306241
+Not predicted branches: 93759
+Accuracy: 76.5602
+--------------------
+
+Testando a hierarquia: ['pc', 'ga', 'lhr', 'ghr', 'xor']
+
+----- Results ------
+Predicted branches: 307915
+Not predicted branches: 92085
+Accuracy: 76.9787
+--------------------
+
+Testando a hierarquia: ['pc', 'ga', 'lhr', 'xor', 'ghr']
+
+----- Results ------
+Predicted branches: 307915
+Not predicted branches: 92085
+Accuracy: 76.9787
+--------------------
+
+Testando a hierarquia: ['pc', 'ga', 'ghr', 'lhr', 'xor']
+
+----- Results ------
+Predicted branches: 307915
+Not predicted branches: 92085
+Accuracy: 76.9787
+--------------------
+
+Testando a hierarquia: ['pc', 'ga', 'ghr', 'xor', 'lhr']
+
+----- Results ------
+Predicted branches: 307915
+Not predicted branches: 92085
+Accuracy: 76.9787
+--------------------
+
+Testando a hierarquia: ['pc', 'ga', 'xor', 'lhr', 'ghr']
+
+----- Results ------
+Predicted branches: 307915
+Not predicted branches: 92085
+Accuracy: 76.9787
+--------------------
+
+Testando a hierarquia: ['pc', 'ga', 'xor', 'ghr', 'lhr']
+
+----- Results ------
+Predicted branches: 307915
+Not predicted branches: 92085
+Accuracy: 76.9787
+--------------------
+
+Testando a hierarquia: ['pc', 'xor', 'lhr', 'ghr', 'ga']
+
+----- Results ------
+Predicted branches: 305497
+Not predicted branches: 94503
+Accuracy: 76.3743
+--------------------
+
+Testando a hierarquia: ['pc', 'xor', 'lhr', 'ga', 'ghr']
+
+----- Results ------
+Predicted branches: 305497
+Not predicted branches: 94503
+Accuracy: 76.3743
+--------------------
+
+Testando a hierarquia: ['pc', 'xor', 'ghr', 'lhr', 'ga']
+
+----- Results ------
+Predicted branches: 305497
+Not predicted branches: 94503
+Accuracy: 76.3743
+--------------------
+
+Testando a hierarquia: ['pc', 'xor', 'ghr', 'ga', 'lhr']
+
+----- Results ------
+Predicted branches: 305497
+Not predicted branches: 94503
+Accuracy: 76.3743
+--------------------
+
+Testando a hierarquia: ['pc', 'xor', 'ga', 'lhr', 'ghr']
+
+----- Results ------
+Predicted branches: 305497
+Not predicted branches: 94503
+Accuracy: 76.3743
+--------------------
+
+Testando a hierarquia: ['pc', 'xor', 'ga', 'ghr', 'lhr']
+
+----- Results ------
+Predicted branches: 305497
+Not predicted branches: 94503
+Accuracy: 76.3743
+--------------------
+
+Testando a hierarquia: ['lhr', 'pc', 'ghr', 'ga', 'xor']
+
+----- Results ------
+Predicted branches: 317681
+Not predicted branches: 82319
+Accuracy: 79.4203
+--------------------
+
+Testando a hierarquia: ['lhr', 'pc', 'ghr', 'xor', 'ga']
+
+----- Results ------
+Predicted branches: 317681
+Not predicted branches: 82319
+Accuracy: 79.4203
+--------------------
+
+Testando a hierarquia: ['lhr', 'pc', 'ga', 'ghr', 'xor']
+
+----- Results ------
+Predicted branches: 317681
+Not predicted branches: 82319
+Accuracy: 79.4203
+--------------------
+
+Testando a hierarquia: ['lhr', 'pc', 'ga', 'xor', 'ghr']
+
+----- Results ------
+Predicted branches: 317681
+Not predicted branches: 82319
+Accuracy: 79.4203
+--------------------
+
+Testando a hierarquia: ['lhr', 'pc', 'xor', 'ghr', 'ga']
+
+----- Results ------
+Predicted branches: 317681
+Not predicted branches: 82319
+Accuracy: 79.4203
+--------------------
+
+Testando a hierarquia: ['lhr', 'pc', 'xor', 'ga', 'ghr']
+
+----- Results ------
+Predicted branches: 317681
+Not predicted branches: 82319
+Accuracy: 79.4203
+--------------------
+
+Testando a hierarquia: ['lhr', 'ghr', 'pc', 'ga', 'xor']
+
+----- Results ------
+Predicted branches: 315230
+Not predicted branches: 84770
+Accuracy: 78.8075
+--------------------
+
+Testando a hierarquia: ['lhr', 'ghr', 'pc', 'xor', 'ga']
+
+----- Results ------
+Predicted branches: 315230
+Not predicted branches: 84770
+Accuracy: 78.8075
+--------------------
+
+Testando a hierarquia: ['lhr', 'ghr', 'ga', 'pc', 'xor']
+
+----- Results ------
+Predicted branches: 315230
+Not predicted branches: 84770
+Accuracy: 78.8075
+--------------------
+
+Testando a hierarquia: ['lhr', 'ghr', 'ga', 'xor', 'pc']
+
+----- Results ------
+Predicted branches: 315230
+Not predicted branches: 84770
+Accuracy: 78.8075
+--------------------
+
+Testando a hierarquia: ['lhr', 'ghr', 'xor', 'pc', 'ga']
+
+----- Results ------
+Predicted branches: 315230
+Not predicted branches: 84770
+Accuracy: 78.8075
+--------------------
+
+Testando a hierarquia: ['lhr', 'ghr', 'xor', 'ga', 'pc']
+
+----- Results ------
+Predicted branches: 315230
+Not predicted branches: 84770
+Accuracy: 78.8075
+--------------------
+
+Testando a hierarquia: ['lhr', 'ga', 'pc', 'ghr', 'xor']
+
+----- Results ------
+Predicted branches: 317003
+Not predicted branches: 82997
+Accuracy: 79.2507
+--------------------
+
+Testando a hierarquia: ['lhr', 'ga', 'pc', 'xor', 'ghr']
+
+----- Results ------
+Predicted branches: 317003
+Not predicted branches: 82997
+Accuracy: 79.2507
+--------------------
+
+Testando a hierarquia: ['lhr', 'ga', 'ghr', 'pc', 'xor']
+
+----- Results ------
+Predicted branches: 317003
+Not predicted branches: 82997
+Accuracy: 79.2507
+--------------------
+
+Testando a hierarquia: ['lhr', 'ga', 'ghr', 'xor', 'pc']
+
+----- Results ------
+Predicted branches: 317003
+Not predicted branches: 82997
+Accuracy: 79.2507
+--------------------
+
+Testando a hierarquia: ['lhr', 'ga', 'xor', 'pc', 'ghr']
+
+----- Results ------
+Predicted branches: 317003
+Not predicted branches: 82997
+Accuracy: 79.2507
+--------------------
+
+Testando a hierarquia: ['lhr', 'ga', 'xor', 'ghr', 'pc']
+
+----- Results ------
+Predicted branches: 317003
+Not predicted branches: 82997
+Accuracy: 79.2507
+--------------------
+
+Testando a hierarquia: ['lhr', 'xor', 'pc', 'ghr', 'ga']
+
+----- Results ------
+Predicted branches: 315702
+Not predicted branches: 84298
+Accuracy: 78.9255
+--------------------
+
+Testando a hierarquia: ['lhr', 'xor', 'pc', 'ga', 'ghr']
+
+----- Results ------
+Predicted branches: 315702
+Not predicted branches: 84298
+Accuracy: 78.9255
+--------------------
+
+Testando a hierarquia: ['lhr', 'xor', 'ghr', 'pc', 'ga']
+
+----- Results ------
+Predicted branches: 315702
+Not predicted branches: 84298
+Accuracy: 78.9255
+--------------------
+
+Testando a hierarquia: ['lhr', 'xor', 'ghr', 'ga', 'pc']
+
+----- Results ------
+Predicted branches: 315702
+Not predicted branches: 84298
+Accuracy: 78.9255
+--------------------
+
+Testando a hierarquia: ['lhr', 'xor', 'ga', 'pc', 'ghr']
+
+----- Results ------
+Predicted branches: 315702
+Not predicted branches: 84298
+Accuracy: 78.9255
+--------------------
+
+Testando a hierarquia: ['lhr', 'xor', 'ga', 'ghr', 'pc']
+
+----- Results ------
+Predicted branches: 315702
+Not predicted branches: 84298
+Accuracy: 78.9255
+--------------------
+
+Testando a hierarquia: ['ghr', 'pc', 'lhr', 'ga', 'xor']
+
+----- Results ------
+Predicted branches: 306241
+Not predicted branches: 93759
+Accuracy: 76.5602
+--------------------
+
+Testando a hierarquia: ['ghr', 'pc', 'lhr', 'xor', 'ga']
+
+----- Results ------
+Predicted branches: 306241
+Not predicted branches: 93759
+Accuracy: 76.5602
+--------------------
+
+Testando a hierarquia: ['ghr', 'pc', 'ga', 'lhr', 'xor']
+
+----- Results ------
+Predicted branches: 306241
+Not predicted branches: 93759
+Accuracy: 76.5602
+--------------------
+
+Testando a hierarquia: ['ghr', 'pc', 'ga', 'xor', 'lhr']
+
+----- Results ------
+Predicted branches: 306241
+Not predicted branches: 93759
+Accuracy: 76.5602
+--------------------
+
+Testando a hierarquia: ['ghr', 'pc', 'xor', 'lhr', 'ga']
+
+----- Results ------
+Predicted branches: 306241
+Not predicted branches: 93759
+Accuracy: 76.5602
+--------------------
+
+Testando a hierarquia: ['ghr', 'pc', 'xor', 'ga', 'lhr']
+
+----- Results ------
+Predicted branches: 306241
+Not predicted branches: 93759
+Accuracy: 76.5602
+--------------------
+
+Testando a hierarquia: ['ghr', 'lhr', 'pc', 'ga', 'xor']
+
+----- Results ------
+Predicted branches: 315230
+Not predicted branches: 84770
+Accuracy: 78.8075
+--------------------
+
+Testando a hierarquia: ['ghr', 'lhr', 'pc', 'xor', 'ga']
+
+----- Results ------
+Predicted branches: 315230
+Not predicted branches: 84770
+Accuracy: 78.8075
+--------------------
+
+Testando a hierarquia: ['ghr', 'lhr', 'ga', 'pc', 'xor']
+
+----- Results ------
+Predicted branches: 315230
+Not predicted branches: 84770
+Accuracy: 78.8075
+--------------------
+
+Testando a hierarquia: ['ghr', 'lhr', 'ga', 'xor', 'pc']
+
+----- Results ------
+Predicted branches: 315230
+Not predicted branches: 84770
+Accuracy: 78.8075
+--------------------
+
+Testando a hierarquia: ['ghr', 'lhr', 'xor', 'pc', 'ga']
+
+----- Results ------
+Predicted branches: 315230
+Not predicted branches: 84770
+Accuracy: 78.8075
+--------------------
+
+Testando a hierarquia: ['ghr', 'lhr', 'xor', 'ga', 'pc']
+
+----- Results ------
+Predicted branches: 315230
+Not predicted branches: 84770
+Accuracy: 78.8075
+--------------------
+
+Testando a hierarquia: ['ghr', 'ga', 'pc', 'lhr', 'xor']
+
+----- Results ------
+Predicted branches: 304161
+Not predicted branches: 95839
+Accuracy: 76.0403
+--------------------
+
+Testando a hierarquia: ['ghr', 'ga', 'pc', 'xor', 'lhr']
+
+----- Results ------
+Predicted branches: 304161
+Not predicted branches: 95839
+Accuracy: 76.0403
+--------------------
+
+Testando a hierarquia: ['ghr', 'ga', 'lhr', 'pc', 'xor']
+
+----- Results ------
+Predicted branches: 304161
+Not predicted branches: 95839
+Accuracy: 76.0403
+--------------------
+
+Testando a hierarquia: ['ghr', 'ga', 'lhr', 'xor', 'pc']
+
+----- Results ------
+Predicted branches: 304161
+Not predicted branches: 95839
+Accuracy: 76.0403
+--------------------
+
+Testando a hierarquia: ['ghr', 'ga', 'xor', 'pc', 'lhr']
+
+----- Results ------
+Predicted branches: 304161
+Not predicted branches: 95839
+Accuracy: 76.0403
+--------------------
+
+Testando a hierarquia: ['ghr', 'ga', 'xor', 'lhr', 'pc']
+
+----- Results ------
+Predicted branches: 304161
+Not predicted branches: 95839
+Accuracy: 76.0403
+--------------------
+
+Testando a hierarquia: ['ghr', 'xor', 'pc', 'lhr', 'ga']
+
+----- Results ------
+Predicted branches: 302651
+Not predicted branches: 97349
+Accuracy: 75.6628
+--------------------
+
+Testando a hierarquia: ['ghr', 'xor', 'pc', 'ga', 'lhr']
+
+----- Results ------
+Predicted branches: 302651
+Not predicted branches: 97349
+Accuracy: 75.6628
+--------------------
+
+Testando a hierarquia: ['ghr', 'xor', 'lhr', 'pc', 'ga']
+
+----- Results ------
+Predicted branches: 302651
+Not predicted branches: 97349
+Accuracy: 75.6628
+--------------------
+
+Testando a hierarquia: ['ghr', 'xor', 'lhr', 'ga', 'pc']
+
+----- Results ------
+Predicted branches: 302651
+Not predicted branches: 97349
+Accuracy: 75.6628
+--------------------
+
+Testando a hierarquia: ['ghr', 'xor', 'ga', 'pc', 'lhr']
+
+----- Results ------
+Predicted branches: 302651
+Not predicted branches: 97349
+Accuracy: 75.6628
+--------------------
+
+Testando a hierarquia: ['ghr', 'xor', 'ga', 'lhr', 'pc']
+
+----- Results ------
+Predicted branches: 302651
+Not predicted branches: 97349
+Accuracy: 75.6628
+--------------------
+
+Testando a hierarquia: ['ga', 'pc', 'lhr', 'ghr', 'xor']
+
+----- Results ------
+Predicted branches: 307915
+Not predicted branches: 92085
+Accuracy: 76.9787
+--------------------
+
+Testando a hierarquia: ['ga', 'pc', 'lhr', 'xor', 'ghr']
+
+----- Results ------
+Predicted branches: 307915
+Not predicted branches: 92085
+Accuracy: 76.9787
+--------------------
+
+Testando a hierarquia: ['ga', 'pc', 'ghr', 'lhr', 'xor']
+
+----- Results ------
+Predicted branches: 307915
+Not predicted branches: 92085
+Accuracy: 76.9787
+--------------------
+
+Testando a hierarquia: ['ga', 'pc', 'ghr', 'xor', 'lhr']
+
+----- Results ------
+Predicted branches: 307915
+Not predicted branches: 92085
+Accuracy: 76.9787
+--------------------
+
+Testando a hierarquia: ['ga', 'pc', 'xor', 'lhr', 'ghr']
+
+----- Results ------
+Predicted branches: 307915
+Not predicted branches: 92085
+Accuracy: 76.9787
+--------------------
+
+Testando a hierarquia: ['ga', 'pc', 'xor', 'ghr', 'lhr']
+
+----- Results ------
+Predicted branches: 307915
+Not predicted branches: 92085
+Accuracy: 76.9787
+--------------------
+
+Testando a hierarquia: ['ga', 'lhr', 'pc', 'ghr', 'xor']
+
+----- Results ------
+Predicted branches: 317003
+Not predicted branches: 82997
+Accuracy: 79.2507
+--------------------
+
+Testando a hierarquia: ['ga', 'lhr', 'pc', 'xor', 'ghr']
+
+----- Results ------
+Predicted branches: 317003
+Not predicted branches: 82997
+Accuracy: 79.2507
+--------------------
+
+Testando a hierarquia: ['ga', 'lhr', 'ghr', 'pc', 'xor']
+
+----- Results ------
+Predicted branches: 317003
+Not predicted branches: 82997
+Accuracy: 79.2507
+--------------------
+
+Testando a hierarquia: ['ga', 'lhr', 'ghr', 'xor', 'pc']
+
+----- Results ------
+Predicted branches: 317003
+Not predicted branches: 82997
+Accuracy: 79.2507
+--------------------
+
+Testando a hierarquia: ['ga', 'lhr', 'xor', 'pc', 'ghr']
+
+----- Results ------
+Predicted branches: 317003
+Not predicted branches: 82997
+Accuracy: 79.2507
+--------------------
+
+Testando a hierarquia: ['ga', 'lhr', 'xor', 'ghr', 'pc']
+
+----- Results ------
+Predicted branches: 317003
+Not predicted branches: 82997
+Accuracy: 79.2507
+--------------------
+
+Testando a hierarquia: ['ga', 'ghr', 'pc', 'lhr', 'xor']
+
+----- Results ------
+Predicted branches: 304161
+Not predicted branches: 95839
+Accuracy: 76.0403
+--------------------
+
+Testando a hierarquia: ['ga', 'ghr', 'pc', 'xor', 'lhr']
+
+----- Results ------
+Predicted branches: 304161
+Not predicted branches: 95839
+Accuracy: 76.0403
+--------------------
+
+Testando a hierarquia: ['ga', 'ghr', 'lhr', 'pc', 'xor']
+
+----- Results ------
+Predicted branches: 304161
+Not predicted branches: 95839
+Accuracy: 76.0403
+--------------------
+
+Testando a hierarquia: ['ga', 'ghr', 'lhr', 'xor', 'pc']
+
+----- Results ------
+Predicted branches: 304161
+Not predicted branches: 95839
+Accuracy: 76.0403
+--------------------
+
+Testando a hierarquia: ['ga', 'ghr', 'xor', 'pc', 'lhr']
+
+----- Results ------
+Predicted branches: 304161
+Not predicted branches: 95839
+Accuracy: 76.0403
+--------------------
+
+Testando a hierarquia: ['ga', 'ghr', 'xor', 'lhr', 'pc']
+
+----- Results ------
+Predicted branches: 304161
+Not predicted branches: 95839
+Accuracy: 76.0403
+--------------------
+
+Testando a hierarquia: ['ga', 'xor', 'pc', 'lhr', 'ghr']
+
+----- Results ------
+Predicted branches: 306129
+Not predicted branches: 93871
+Accuracy: 76.5323
+--------------------
+
+Testando a hierarquia: ['ga', 'xor', 'pc', 'ghr', 'lhr']
+
+----- Results ------
+Predicted branches: 306129
+Not predicted branches: 93871
+Accuracy: 76.5323
+--------------------
+
+Testando a hierarquia: ['ga', 'xor', 'lhr', 'pc', 'ghr']
+
+----- Results ------
+Predicted branches: 306129
+Not predicted branches: 93871
+Accuracy: 76.5323
+--------------------
+
+Testando a hierarquia: ['ga', 'xor', 'lhr', 'ghr', 'pc']
+
+----- Results ------
+Predicted branches: 306129
+Not predicted branches: 93871
+Accuracy: 76.5323
+--------------------
+
+Testando a hierarquia: ['ga', 'xor', 'ghr', 'pc', 'lhr']
+
+----- Results ------
+Predicted branches: 306129
+Not predicted branches: 93871
+Accuracy: 76.5323
+--------------------
+
+Testando a hierarquia: ['ga', 'xor', 'ghr', 'lhr', 'pc']
+
+----- Results ------
+Predicted branches: 306129
+Not predicted branches: 93871
+Accuracy: 76.5323
+--------------------
+
+Testando a hierarquia: ['xor', 'pc', 'lhr', 'ghr', 'ga']
+
+----- Results ------
+Predicted branches: 305497
+Not predicted branches: 94503
+Accuracy: 76.3743
+--------------------
+
+Testando a hierarquia: ['xor', 'pc', 'lhr', 'ga', 'ghr']
+
+----- Results ------
+Predicted branches: 305497
+Not predicted branches: 94503
+Accuracy: 76.3743
+--------------------
+
+Testando a hierarquia: ['xor', 'pc', 'ghr', 'lhr', 'ga']
+
+----- Results ------
+Predicted branches: 305497
+Not predicted branches: 94503
+Accuracy: 76.3743
+--------------------
+
+Testando a hierarquia: ['xor', 'pc', 'ghr', 'ga', 'lhr']
+
+----- Results ------
+Predicted branches: 305497
+Not predicted branches: 94503
+Accuracy: 76.3743
+--------------------
+
+Testando a hierarquia: ['xor', 'pc', 'ga', 'lhr', 'ghr']
+
+----- Results ------
+Predicted branches: 305497
+Not predicted branches: 94503
+Accuracy: 76.3743
+--------------------
+
+Testando a hierarquia: ['xor', 'pc', 'ga', 'ghr', 'lhr']
+
+----- Results ------
+Predicted branches: 305497
+Not predicted branches: 94503
+Accuracy: 76.3743
+--------------------
+
+Testando a hierarquia: ['xor', 'lhr', 'pc', 'ghr', 'ga']
+
+----- Results ------
+Predicted branches: 315702
+Not predicted branches: 84298
+Accuracy: 78.9255
+--------------------
+
+Testando a hierarquia: ['xor', 'lhr', 'pc', 'ga', 'ghr']
+
+----- Results ------
+Predicted branches: 315702
+Not predicted branches: 84298
+Accuracy: 78.9255
+--------------------
+
+Testando a hierarquia: ['xor', 'lhr', 'ghr', 'pc', 'ga']
+
+----- Results ------
+Predicted branches: 315702
+Not predicted branches: 84298
+Accuracy: 78.9255
+--------------------
+
+Testando a hierarquia: ['xor', 'lhr', 'ghr', 'ga', 'pc']
+
+----- Results ------
+Predicted branches: 315702
+Not predicted branches: 84298
+Accuracy: 78.9255
+--------------------
+
+Testando a hierarquia: ['xor', 'lhr', 'ga', 'pc', 'ghr']
+
+----- Results ------
+Predicted branches: 315702
+Not predicted branches: 84298
+Accuracy: 78.9255
+--------------------
+
+Testando a hierarquia: ['xor', 'lhr', 'ga', 'ghr', 'pc']
+
+----- Results ------
+Predicted branches: 315702
+Not predicted branches: 84298
+Accuracy: 78.9255
+--------------------
+
+Testando a hierarquia: ['xor', 'ghr', 'pc', 'lhr', 'ga']
+
+----- Results ------
+Predicted branches: 302651
+Not predicted branches: 97349
+Accuracy: 75.6628
+--------------------
+
+Testando a hierarquia: ['xor', 'ghr', 'pc', 'ga', 'lhr']
+
+----- Results ------
+Predicted branches: 302651
+Not predicted branches: 97349
+Accuracy: 75.6628
+--------------------
+
+Testando a hierarquia: ['xor', 'ghr', 'lhr', 'pc', 'ga']
+
+----- Results ------
+Predicted branches: 302651
+Not predicted branches: 97349
+Accuracy: 75.6628
+--------------------
+
+Testando a hierarquia: ['xor', 'ghr', 'lhr', 'ga', 'pc']
+
+----- Results ------
+Predicted branches: 302651
+Not predicted branches: 97349
+Accuracy: 75.6628
+--------------------
+
+Testando a hierarquia: ['xor', 'ghr', 'ga', 'pc', 'lhr']
+
+----- Results ------
+Predicted branches: 302651
+Not predicted branches: 97349
+Accuracy: 75.6628
+--------------------
+
+Testando a hierarquia: ['xor', 'ghr', 'ga', 'lhr', 'pc']
+
+----- Results ------
+Predicted branches: 302651
+Not predicted branches: 97349
+Accuracy: 75.6628
+--------------------
+
+Testando a hierarquia: ['xor', 'ga', 'pc', 'lhr', 'ghr']
+
+----- Results ------
+Predicted branches: 306129
+Not predicted branches: 93871
+Accuracy: 76.5323
+--------------------
+
+Testando a hierarquia: ['xor', 'ga', 'pc', 'ghr', 'lhr']
+
+----- Results ------
+Predicted branches: 306129
+Not predicted branches: 93871
+Accuracy: 76.5323
+--------------------
+
+Testando a hierarquia: ['xor', 'ga', 'lhr', 'pc', 'ghr']
+
+----- Results ------
+Predicted branches: 306129
+Not predicted branches: 93871
+Accuracy: 76.5323
+--------------------
+
+Testando a hierarquia: ['xor', 'ga', 'lhr', 'ghr', 'pc']
+
+----- Results ------
+Predicted branches: 306129
+Not predicted branches: 93871
+Accuracy: 76.5323
+--------------------
+
+Testando a hierarquia: ['xor', 'ga', 'ghr', 'pc', 'lhr']
+
+----- Results ------
+Predicted branches: 306129
+Not predicted branches: 93871
+Accuracy: 76.5323
+--------------------
+
+Testando a hierarquia: ['xor', 'ga', 'ghr', 'lhr', 'pc']
+
+----- Results ------
+Predicted branches: 306129
+Not predicted branches: 93871
+Accuracy: 76.5323
+--------------------
+
